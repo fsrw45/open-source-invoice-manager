@@ -1,1 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>Open Source Invoice Manager</title>
+  <meta
+    name="description"
+    content="A simple open-source invoice manager for creating, tracking and managing invoices."
+  >
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-icon">IM</div>
+
+      <div>
+        <h1>Invoice Manager</h1>
+        <p>Create, manage and track your invoices</p>
+      </div>
+    </div>
+
+    <button class="primary-btn" onclick="openInvoiceForm()">
+      + New Invoice
+    </button>
+  </header>
+
+
+  <main class="container">
+
+    <!-- DASHBOARD -->
+    <section class="stats-grid">
+
+      <div class="stat-card">
+        <div class="stat-label">Total Invoices</div>
+        <div class="stat-value" id="totalInvoices">0</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-label">Paid</div>
+        <div class="stat-value" id="paidInvoices">0</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-label">Pending</div>
+        <div class="stat-value" id="pendingInvoices">0</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-label">Total Revenue</div>
+        <div class="stat-value" id="totalRevenue">$0.00</div>
+      </div>
+
+    </section>
+
+
+    <!-- CREATE INVOICE -->
+    <section class="form-card" id="invoiceForm">
+
+      <div class="section-header">
+        <div>
+          <h2>Create New Invoice</h2>
+          <p>Enter customer and invoice details below.</p>
+        </div>
+      </div>
+
+
+      <form id="invoiceFormElement">
+
+        <div class="form-section">
+
+          <h3>Customer Information</h3>
+
+          <div class="form-grid">
+
+            <div class="form-group">
+              <label for="customerName">Customer Name</label>
+
+              <input
+                type="text"
+                id="customerName"
+                placeholder="John Smith"
+                required
+              >
+            </div>
+
+
+            <div class="form-group">
+              <label for="customerEmail">Customer Email</label>
+
+              <input
+                type="email"
+                id="customerEmail"
+                placeholder="john@example.com"
+                required
+              >
+            </div>
+
+
+            <div class="form-group">
+              <label for="customerPhone">Mobile Number</label>
+
+              <input
+                type="tel"
+                id="customerPhone"
+                placeholder="+92 300 1234567"
+                required
+              >
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="form-section">
+
+          <h3>Invoice Information</h3>
+
+          <div class="form-grid">
+
+            <div class="form-group">
+              <label for="invoiceNumber">Invoice Number</label>
+
+              <input
+                type="text"
+                id="invoiceNumber"
+                placeholder="INV-001"
+                required
+              >
+            </div>
+
+
+            <div class="form-group">
+              <label for="invoiceAmount">Amount</label>
+
+              <input
+                type="number"
+                id="invoiceAmount"
+                placeholder="500"
+                min="0"
+                step="0.01"
+                required
+              >
+            </div>
+
+
+            <div class="form-group">
+              <label for="dueDate">Due Date</label>
+
+              <input
+                type="date"
+                id="dueDate"
+                required
+              >
+            </div>
+
+
+            <div class="form-group">
+              <label for="invoiceStatus">Status</label>
+
+              <select id="invoiceStatus">
+                <option value="Pending">Pending</option>
+                <option value="Paid">Paid</option>
+              </select>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- SIGNATURE -->
+        <div class="form-section">
+
+          <h3>Authorized Signature</h3>
+
+          <div class="form-grid">
+
+            <div class="form-group">
+              <label for="signature">Signature / Authorized Person</label>
+
+              <input
+                type="text"
+                id="signature"
+                placeholder="Enter authorized person's name"
+                required
+              >
+            </div>
+
+          </div>
+
+          <div class="signature-preview">
+            <span id="signaturePreview">
+              Authorized Signature
+            </span>
+          </div>
+
+        </div>
+
+
+        <div class="form-actions">
+
+          <button
+            type="button"
+            class="secondary-btn"
+            onclick="closeInvoiceForm()"
+          >
+            Cancel
+          </button>
+
+          <button
+            type="submit"
+            class="primary-btn"
+          >
+            Create Invoice
+          </button>
+
+        </div>
+
+      </form>
+
+    </section>
+
+
+    <!-- INVOICES -->
+    <section class="invoice-card">
+
+      <div class="section-header">
+
+        <div>
+          <h2>Invoices</h2>
+          <p>View and manage your invoices.</p>
+        </div>
+
+        <div class="filters">
+
+          <input
+            type="search"
+            id="searchInput"
+            placeholder="Search customer..."
+          >
+
+          <select id="filterStatus">
+            <option value="All">All Invoices</option>
+            <option value="Paid">Paid</option>
+            <option value="Pending">Pending</option>
+          </select>
+
+        </div>
+
+      </div>
+
+
+      <div class="table-wrapper">
+
+        <table>
+
+          <thead>
+            <tr>
+              <th>Invoice</th>
+              <th>Customer</th>
+              <th>Mobile</th>
+              <th>Amount</th>
+              <th>Due Date</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+
+          <tbody id="invoiceTableBody"></tbody>
+
+        </table>
+
+
+        <div id="emptyState" class="empty-state">
+
+          <div class="empty-icon">📄</div>
+
+          <h3>No invoices yet</h3>
+
+          <p>
+            Create your first invoice to get started.
+          </p>
+
+          <button
+            class="primary-btn"
+            onclick="openInvoiceForm()"
+          >
+            + Create Invoice
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer>
+
+    <p>
+      Open Source Invoice Manager · Built for simple invoice management
+    </p>
+
+    <a
+      href="https://github.com/"
+      target="_blank"
+      rel="noopener"
+    >
+      GitHub
+    </a>
+
+  </footer>
+
+
+  <!-- PRINT INVOICE -->
+  <div id="printInvoice" class="print-invoice"></div>
+
+
+  <script src="app.js"></script>
+
+</body>
+</html>
