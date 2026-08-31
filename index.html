@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Open Source Invoice Manager</title>
+
   <meta
     name="description"
     content="A simple open-source invoice manager for creating, tracking and managing invoices."
@@ -73,6 +74,7 @@
 
       <form id="invoiceFormElement">
 
+        <!-- CUSTOMER -->
         <div class="form-section">
 
           <h3>Customer Information</h3>
@@ -119,6 +121,7 @@
         </div>
 
 
+        <!-- INVOICE INFORMATION -->
         <div class="form-section">
 
           <h3>Invoice Information</h3>
@@ -137,6 +140,60 @@
             </div>
 
 
+            <!-- CURRENCY -->
+            <div class="form-group">
+              <label for="invoiceCurrency">Currency</label>
+
+              <select id="invoiceCurrency" required>
+
+                <option value="USD">USD — $</option>
+                <option value="EUR">EUR — €</option>
+                <option value="GBP">GBP — £</option>
+                <option value="PKR">PKR — ₨</option>
+                <option value="INR">INR — ₹</option>
+
+                <option value="AED">AED — د.إ</option>
+                <option value="SAR">SAR — ﷼</option>
+                <option value="QAR">QAR — ﷼</option>
+                <option value="KWD">KWD — د.ك</option>
+                <option value="BHD">BHD — .د.ب</option>
+                <option value="OMR">OMR — ﷼</option>
+                <option value="JOD">JOD — د.ا</option>
+
+                <option value="CAD">CAD — $</option>
+                <option value="AUD">AUD — $</option>
+                <option value="NZD">NZD — $</option>
+                <option value="SGD">SGD — $</option>
+                <option value="HKD">HKD — $</option>
+
+                <option value="JPY">JPY — ¥</option>
+                <option value="CNY">CNY — ¥</option>
+                <option value="KRW">KRW — ₩</option>
+
+                <option value="CHF">CHF</option>
+                <option value="SEK">SEK — kr</option>
+                <option value="NOK">NOK — kr</option>
+                <option value="DKK">DKK — kr</option>
+
+                <option value="PLN">PLN — zł</option>
+                <option value="TRY">TRY — ₺</option>
+                <option value="BRL">BRL — R$</option>
+                <option value="MXN">MXN — $</option>
+                <option value="ZAR">ZAR — R</option>
+
+                <option value="THB">THB — ฿</option>
+                <option value="MYR">MYR — RM</option>
+                <option value="IDR">IDR — Rp</option>
+
+                <option value="BDT">BDT — ৳</option>
+                <option value="NPR">NPR — रु</option>
+                <option value="LKR">LKR — Rs</option>
+
+              </select>
+            </div>
+
+
+            <!-- AMOUNT -->
             <div class="form-group">
               <label for="invoiceAmount">Amount</label>
 
@@ -151,6 +208,7 @@
             </div>
 
 
+            <!-- DUE DATE -->
             <div class="form-group">
               <label for="dueDate">Due Date</label>
 
@@ -162,12 +220,20 @@
             </div>
 
 
+            <!-- STATUS -->
             <div class="form-group">
               <label for="invoiceStatus">Status</label>
 
               <select id="invoiceStatus">
-                <option value="Pending">Pending</option>
-                <option value="Paid">Paid</option>
+
+                <option value="Pending">
+                  Pending
+                </option>
+
+                <option value="Paid">
+                  Paid
+                </option>
+
               </select>
             </div>
 
@@ -184,7 +250,10 @@
           <div class="form-grid">
 
             <div class="form-group">
-              <label for="signature">Signature / Authorized Person</label>
+
+              <label for="signature">
+                Signature / Authorized Person
+              </label>
 
               <input
                 type="text"
@@ -192,19 +261,24 @@
                 placeholder="Enter authorized person's name"
                 required
               >
+
             </div>
 
           </div>
 
+
           <div class="signature-preview">
+
             <span id="signaturePreview">
               Authorized Signature
             </span>
+
           </div>
 
         </div>
 
 
+        <!-- ACTIONS -->
         <div class="form-actions">
 
           <button
@@ -239,6 +313,7 @@
           <p>View and manage your invoices.</p>
         </div>
 
+
         <div class="filters">
 
           <input
@@ -247,10 +322,21 @@
             placeholder="Search customer..."
           >
 
+
           <select id="filterStatus">
-            <option value="All">All Invoices</option>
-            <option value="Paid">Paid</option>
-            <option value="Pending">Pending</option>
+
+            <option value="All">
+              All Invoices
+            </option>
+
+            <option value="Paid">
+              Paid
+            </option>
+
+            <option value="Pending">
+              Pending
+            </option>
+
           </select>
 
         </div>
@@ -263,7 +349,9 @@
         <table>
 
           <thead>
+
             <tr>
+
               <th>Invoice</th>
               <th>Customer</th>
               <th>Mobile</th>
@@ -271,8 +359,11 @@
               <th>Due Date</th>
               <th>Status</th>
               <th>Actions</th>
+
             </tr>
+
           </thead>
+
 
           <tbody id="invoiceTableBody"></tbody>
 
@@ -313,7 +404,7 @@
     </p>
 
     <a
-      href="https://github.com/"
+      href="https://github.com/fsrw45/open-source-invoice-manager"
       target="_blank"
       rel="noopener"
     >
