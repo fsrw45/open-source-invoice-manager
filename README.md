@@ -1,98 +1,83 @@
 # Open Source Invoice Manager
 
-A simple, professional and open-source web application for creating, managing and tracking invoices.
+A lightweight, professional and open-source web application for creating, managing, tracking and printing invoices.
 
 ## 🚀 Live Demo
 
 https://fsrw45.github.io/open-source-invoice-manager/
 
-> Replace the URL above with your actual GitHub Pages URL after deployment.
-
----
-
 ## ✨ Features
 
-- Create invoices
-- Customer name management
-- Customer email management
+- Create and manage invoices
+- Customer name and email
 - Customer mobile number
 - Invoice number
 - Invoice amount
 - Due date
 - Paid / Pending status
-- Authorized signature
+- Authorized person / signature
 - Invoice search
 - Invoice filtering
-- Print invoices
+- Print-friendly invoices
 - Delete invoices
 - Dashboard statistics
-- Browser local storage
-- Responsive mobile-friendly interface
+- Browser localStorage
+- Responsive design
 - No backend required
-
----
+- No external framework required
 
 ## 📊 Dashboard
 
-The dashboard provides quick information about:
+The dashboard provides an overview of:
 
 - Total invoices
 - Paid invoices
 - Pending invoices
-- Total paid revenue
+- Total revenue
 
----
+## 🧾 Invoice Details
 
-## 🧾 Invoice Information
-
-Each invoice can contain:
+Each invoice can include:
 
 - Customer name
 - Customer email
-- Customer mobile number
+- Mobile number
 - Invoice number
 - Amount
 - Due date
 - Payment status
 - Authorized signature
 
----
+## 🖨️ Print & PDF
 
-## 🖨️ Print Invoices
+Invoices can be printed using the browser's print functionality.
 
-Invoices can be printed directly from the application.
-
-Click the **Print** button next to an invoice to generate a print-friendly invoice.
-
----
+This also allows users to save an invoice as a PDF using the browser's **Save as PDF** option.
 
 ## 💾 Data Storage
 
-This project uses the browser's `localStorage` to store invoice information.
+Invoice data is stored locally in the browser using `localStorage`.
 
-No external database is required.
+No external database or backend server is required.
 
-This makes the project:
+This makes the application:
 
 - Lightweight
 - Easy to deploy
 - Easy to understand
-- Suitable for demos and small personal projects
+- Suitable for small businesses, demos and personal projects
 
----
+> Note: Because data is stored in browser localStorage, invoices are stored locally on the user's device/browser and are not synchronized between devices.
 
 ## 🛠️ Technologies
 
-This project is built with:
-
 - HTML5
 - CSS3
-- JavaScript
-- Browser LocalStorage
+- Vanilla JavaScript
+- Browser localStorage
+- GitHub Pages
 
 No framework or external dependency is required.
-
----
 
 ## 📁 Project Structure
 
@@ -102,4 +87,5 @@ open-source-invoice-manager/
 ├── index.html
 ├── styles.css
 ├── app.js
-└── README.md
+├── README.md
+└── LICENSE
